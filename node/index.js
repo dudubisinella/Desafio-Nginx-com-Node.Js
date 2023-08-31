@@ -6,11 +6,14 @@ const app = express();
 const config = {
   host: 'db',
   user: 'root',
-  password: 'password',
+  password: 'root',
   database: 'nodedb',
 };
 
 const connection = mysql.createConnection(config);
+
+const create_table = 'CREATE TABLE IF NOT EXISTS people (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;'
+connection.query(create_table);
 
 app.get('/', (req,res) => {
   const name = 'Eduardo';
